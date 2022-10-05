@@ -15,3 +15,16 @@ Stack in Mind (Early Stages):
 - Push Docker images to public Docker Hub Repos
 - Postman Collection for Testing
 - VS Code as Primary IDE
+
+
+## Docker
+ Generate Development certificate by running the following:
+
+ ```
+dotnet dev-certs https --trust
+dotnet dev-certs https -ep $env:USERPROFILE\.aspnet\https\dev_cert.pfx -p password!
+dotnet dev-certs https --trust
+ ```
+
+ Once the certificates are installed, navigate to `deployments/docker-compose` and run `docker compose up`.
+ 
