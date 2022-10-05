@@ -15,9 +15,12 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: Restore dependencies
+    - name: Restore Catalog Service Dependencies
+      working-directory: ./src/services/catalog/src/Catalog.API/
       run: dotnet restore
-    - name: Build
+    - name: Build Catalog Service
+      working-directory: ./src/services/catalog/src/Catalog.API/
       run: dotnet build --no-restore
-    - name: Test
+    - name: Test Catalog Service
+      working-directory: ./src/services/catalog/src/Catalog.API/
       run: dotnet test --no-build --verbosity normal
