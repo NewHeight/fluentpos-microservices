@@ -19,6 +19,10 @@ jobs:
     name: Build Catalog Service Docker Container Image
     runs-on: ubuntu-latest
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - name: Checkout Code
         uses: actions/checkout@v3
       - name: Build and push Docker images
