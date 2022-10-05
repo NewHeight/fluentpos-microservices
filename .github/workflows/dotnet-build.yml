@@ -1,23 +1,23 @@
-name: build microservices
+# name: build microservices
 
-on:
-  workflow_dispatch:
+# on:
+#   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    - name: Restore Catalog Service Dependencies
-      working-directory: ./src/services/catalog/src/Catalog.API/
-      run: dotnet restore
-    - name: Build Catalog Service
-      working-directory: ./src/services/catalog/src/Catalog.API/
-      run: dotnet build --no-restore
-    - name: Test Catalog Service
-      working-directory: ./src/services/catalog/src/Catalog.API/
-      run: dotnet test --no-build --verbosity normal
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v3
+#     - name: Setup .NET
+#       uses: actions/setup-dotnet@v3
+#       with:
+#         dotnet-version: 6.0.x
+#     - name: Restore Catalog Service Dependencies
+#       working-directory: ./src/services/catalog/src/Catalog.API/
+#       run: dotnet restore
+#     - name: Build Catalog Service
+#       working-directory: ./src/services/catalog/src/Catalog.API/
+#       run: dotnet build --no-restore
+#     - name: Test Catalog Service
+#       working-directory: ./src/services/catalog/src/Catalog.API/
+#       run: dotnet test --no-build --verbosity normal
