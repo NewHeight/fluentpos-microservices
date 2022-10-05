@@ -1,5 +1,4 @@
 name: build-push-docker
-
 on:
   push:
     branches: [ "develop" ]
@@ -7,8 +6,8 @@ on:
     branches: [ "develop" ]
   workflow_dispatch: 
 jobs:     
-  catalog-service:
-    name: Build Catalog Service Docker Container Image
+  docker:
+    name: Build Container Images & Push to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
@@ -16,10 +15,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Checkout Code
+      - name: Code Checkout
         uses: actions/checkout@v3
-      - name: Build the Docker image
+      - name: Build Catalog Service Image
         working-directory: ./src/services/catalog
         run: docker build -t ${{ github.actor }}/fluentpos-catalog-service:$(date +%Y%m%d) -t ${{ github.actor }}/fluentpos-catalog-service:latest .
-      - name: Push the Docker image
+      - name: Push Catalog Service Image
         run: docker push ${{ github.actor }}/fluentpos-catalog-service --all-tags   
