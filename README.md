@@ -1,4 +1,4 @@
-# fluentpos-microservices
+# fluentpos microservices
 
 Stack in Mind (Early Stages):
 - .NET 6 Microservices
