@@ -8,6 +8,7 @@ on:
   workflow_dispatch: 
 jobs:
   login:
+    name: Log to Docker Hub
     runs-on: ubuntu-latest
     steps:
       - name: Login to Docker Hub
@@ -23,6 +24,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Build the Docker image
         working-directory: ./src/services/catalog
-        run: |
-          docker build . --tag iammukeshm/fluentpos-catalog-service:$(date +%s)
-          docker push iammukeshm/fluentpos-catalog-service
+        run: docker build . --tag iammukeshm/fluentpos-catalog-service:$(date +%s)
+      - name: Push the Docker image
+        run: docker push iammukeshm/fluentpos-catalog-service:$(date +%s)    
