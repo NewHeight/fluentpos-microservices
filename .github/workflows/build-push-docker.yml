@@ -1,19 +1,17 @@
-name: Push Docker Image To Hub
+name: build-push-docker
 
 on:
   push:
     branches: [ "develop" ]
   pull_request:
     branches: [ "develop" ]
+  workflow_dispatch:  
 
 jobs:
-
-  build:
-
+  docker:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
-    - name: Push Catalog Service Image to Docker Hub
+    - name: Build Catalog Service Image to Docker Hub      
       working-directory: ./src/services/catalog/
       run: docker build -t iammukeshm/fluentpos-catalog-service .
