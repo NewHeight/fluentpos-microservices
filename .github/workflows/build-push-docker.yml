@@ -24,6 +24,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Build the Docker image
         working-directory: ./src/services/catalog
-        run: docker build -t iammukeshm/fluentpos-catalog-service:1664992518 -t iammukeshm/fluentpos-catalog-service:latest
+        run: docker build -t iammukeshm/fluentpos-catalog-service:1664992518 -t iammukeshm/fluentpos-catalog-service:latest .
       - name: Push the Docker image
         run: docker push iammukeshm/fluentpos-catalog-service --all-tags   
