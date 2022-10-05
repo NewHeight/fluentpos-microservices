@@ -15,7 +15,8 @@ services:
     volumes:
       - ${USERPROFILE}\.aspnet\https:/https
     depends_on:
-      - category-service-pg
+      category-service-pg:
+        condition: service_healthy
   category-service-pg:
     container_name: "catalog-service-pg"
     image: postgres:14.5-alpine
@@ -27,5 +28,10 @@ services:
       - 5002:5432
     volumes:
       - category-service-pg-data:/data/db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5 
 volumes:
   category-service-pg-data:
