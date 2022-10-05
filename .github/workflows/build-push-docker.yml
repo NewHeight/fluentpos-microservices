@@ -13,22 +13,5 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-  code-checkout:
-    name: Code Checkout
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-  catalog-service:
-    name: Build Catalog Service Docker Container Image
-    runs-on: ubuntu-latest
-    steps:
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v3.1.1
-        with:
-          context: .
-          push: true
-          file: ./src/services/catalog/Dockerfile
-          tags: iammukeshm/fluentpos-catalog-service        
+          username: ${{secrets.DOCKER_USERNAME}}
+          password: ${{secrets.DOCKER_PASSWORD}}      
