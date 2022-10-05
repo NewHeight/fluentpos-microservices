@@ -20,6 +20,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Build the Docker image
         working-directory: ./src/services/catalog
-        run: docker build -t iammukeshm/fluentpos-catalog-service:$(date +%Y%m%d)   -t iammukeshm/fluentpos-catalog-service:latest .
+        run: docker build -t ${{ github.actor }}/fluentpos-catalog-service:$(date +%Y%m%d) -t ${{ github.actor }}/fluentpos-catalog-service:latest .
       - name: Push the Docker image
-        run: docker push iammukeshm/fluentpos-catalog-service --all-tags   
+        run: docker push ${{ github.actor }}/fluentpos-catalog-service --all-tags   

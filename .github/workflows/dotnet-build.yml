@@ -1,4 +1,4 @@
-name: build microservices
+name: dotnet-build
 
 on:
   workflow_dispatch:
