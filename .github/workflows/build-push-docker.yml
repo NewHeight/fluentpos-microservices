@@ -24,5 +24,5 @@ jobs:
       - name: Build the Docker image
         working-directory: ./src/services/catalog
         run: |
-          docker build -t iammukeshm/fluentpos-catalog-service .
-          docker push iammukeshm/fluentpos-catalog-service:$(date +%s)
+          docker build . --tag iammukeshm/fluentpos-catalog-service:$(date +%s)
+          docker push iammukeshm/fluentpos-catalog-service
