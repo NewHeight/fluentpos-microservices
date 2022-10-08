@@ -1,33 +1,40 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalog
+  name: gateway
   namespace: fluentpos
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: catalog
+      app: gateway
   template:
     metadata:
       labels:
-        app: catalog
+        app: gateway
     spec:
       containers:
-      - name: catalog
-        image: iammukeshm/fluentpos-catalog-service:latest
+      - name: gateway
+        image: iammukeshm/fluentpos-gateway:latest
+        env:
+        - name: "ASPNETCORE_ENVIRONMENT"
+          value: "k8s"
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        ports:
+        - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: catalog
+  name: gateway
 spec:
+  type: LoadBalancer
   selector:
-    app: catalog
+    app: gateway
   ports:
-  - port: 80
+  - port: 5000
+    targetPort: 80
           
