@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 WORKDIR /source
 
-COPY ./src/ .
+COPY . .
 
 RUN dotnet restore ./Gateway/Gateway.csproj
 RUN dotnet build -c Release --no-restore ./Gateway/Gateway.csproj
