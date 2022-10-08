@@ -14,25 +14,21 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
     volumes:
       - ${USERPROFILE}\.aspnet\https:/https
+    networks:
+     - fluentpos 
   
-  catalog-service:
+  catalog:
     container_name: "catalog-service"
     image: iammukeshm/fluentpos-catalog-service
-    ports:
-      - "5020:5020"
-      - "6020:6020"
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
-      - ASPNETCORE_URLS=https://+:5020;http://+:6020
-      - ASPNETCORE_Kestrel__Certificates__Default__Password=password!
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dev_cert.pfx
-    volumes:
-      - ${USERPROFILE}\.aspnet\https:/https
     depends_on:
-      category-service-pg:
+      catalog-pg:
         condition: service_healthy
-  category-service-pg:
-    container_name: "catalog-service-pg"
+    networks:
+     - fluentpos    
+  catalog-pg:
+    container_name: "catalog-postgres"
     image: postgres:14.5-alpine
     environment:
       - POSTGRES_DATABASE=admin
@@ -41,11 +37,17 @@ services:
     ports:
       - 5200:5432
     volumes:
-      - category-service-pg-data:/data/db
+      - catalog-pg-data:/data/db
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       timeout: 5s
-      retries: 5 
+      retries: 5
+    networks:
+     - fluentpos   
 volumes:
-  category-service-pg-data:
+  catalog-pg-data:
+    
+networks:
+  fluentpos:
+    name:  fluentpos
