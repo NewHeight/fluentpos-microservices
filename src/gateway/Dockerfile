@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
+WORKDIR /source
+
+COPY ./src/ .
+
+RUN dotnet restore ./Gateway/Gateway.csproj
+RUN dotnet build -c Release --no-restore ./Gateway/Gateway.csproj
+
+WORKDIR /source/Gateway/
+
+RUN dotnet publish -c Release --no-build -o /app
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
+WORKDIR /app
+COPY --from=build  /app ./
+
+ENTRYPOINT ["dotnet", "FluentPOS.Gateway.dll"]
