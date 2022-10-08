@@ -4,8 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>    
-    <RootNamespace>FluentPOS.Gateway</RootNamespace>
-    <AssemblyName>FluentPOS.Gateway</AssemblyName>
+    <RootNamespace>FluentPOS.Gateway.Host</RootNamespace>
+    <AssemblyName>FluentPOS.Gateway.Host</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

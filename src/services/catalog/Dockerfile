@@ -3,10 +3,10 @@ WORKDIR /source
 
 COPY ./src/ .
 
-RUN dotnet restore ./Catalog.API/Catalog.API.csproj
-RUN dotnet build -c Release --no-restore ./Catalog.API/Catalog.API.csproj
+RUN dotnet restore ./Host/Host.csproj
+RUN dotnet build -c Release --no-restore ./Host/Host.csproj
 
-WORKDIR /source/Catalog.API/
+WORKDIR /source/Host/
 
 RUN dotnet publish -c Release --no-build -o /app
 
@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
 COPY --from=build  /app ./
 
-ENTRYPOINT ["dotnet", "FluentPOS.Services.Catalog.API.dll"]
+ENTRYPOINT ["dotnet", "FluentPOS.Services.Catalog.Host.dll"]
