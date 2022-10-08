@@ -12,9 +12,8 @@
     "Catalog.API": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:5020;http://localhost:6020",
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5020;https://localhost:5200",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

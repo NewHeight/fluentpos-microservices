@@ -12,9 +12,8 @@
     "Gateway": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:5010;http://localhost:6010",
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5010;https://localhost:5100",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
