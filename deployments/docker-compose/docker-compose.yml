@@ -5,8 +5,8 @@ services:
     container_name: "gateway"
     image: iammukeshm/fluentpos-gateway
     ports:
-      - "5010:5010"
-      - "6010:6010"
+      - 5010:5010
+      - 6010:6010
     environment:
       - ASPNETCORE_ENVIRONMENT=docker
       - ASPNETCORE_URLS=https://+:5010;http://+:6010
