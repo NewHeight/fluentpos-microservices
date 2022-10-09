@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-conf
+  namespace: fluentpos
+data:
+  ASPNETCORE_ENVIRONMENT: k8s

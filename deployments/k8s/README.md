@@ -4,9 +4,9 @@ Ensure you have the following installed on your machine.
 
 Navigate to /deployments/k8s and run the following commands in the given order.
 
-- `kubectl apply -f fluentpos-ns.yaml` - This would create a new namespace on your local k8s cluster.
-- `kubectl apply -f gateway-depl.yaml` - Pulls the Gateway Image, Creates Pod and Load Balancer Service.
-- `kubectl apply -f catalog-depl.yaml` - Pulls the Catalog Service Image, Creates Pod and Service.
+- `kubectl apply -f fluentpos-ns.yaml` - This would create a new namespace on your local k8s cluster. It's important to run this command first.
+- `kubectl config set-context --current --namespace=fluentpos` - This sets the current working namespace to fluentpos.
+- `kubectl apply -f .` - Creates all the required K8S Resources and deploys to the cluster.
 
 That's everything!
 
