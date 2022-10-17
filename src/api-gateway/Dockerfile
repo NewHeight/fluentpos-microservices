@@ -6,7 +6,7 @@ COPY . .
 RUN dotnet restore ./Gateway.csproj
 RUN dotnet build -c Release --no-restore ./Gateway.csproj
 
-WORKDIR /source/Gateway/
+WORKDIR /source
 
 RUN dotnet publish -c Release --no-build -o /app
 
