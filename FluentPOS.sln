@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3FE5AFC4-7697-426C-8764-CBEC271D429C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "gateway", "gateway", "{5FEBCFDE-C667-4884-92ED-32D46410D6AA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "api-gateway", "api-gateway", "{5FEBCFDE-C667-4884-92ED-32D46410D6AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "src\gateway\Gateway\Gateway.csproj", "{27ACE33C-F647-4845-BB7E-87497A39D98F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "src\api-gateway\Gateway.csproj", "{27ACE33C-F647-4845-BB7E-87497A39D98F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "services", "services", "{3A641C99-3024-45F3-ABDD-44FA5685CF8F}"
 EndProject

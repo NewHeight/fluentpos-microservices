@@ -3,10 +3,10 @@ WORKDIR /source
 
 COPY . .
 
-RUN dotnet restore ./Host/Host.csproj
-RUN dotnet build -c Release --no-restore ./Host/Host.csproj
+RUN dotnet restore ./Gateway.csproj
+RUN dotnet build -c Release --no-restore ./Gateway.csproj
 
-WORKDIR /source/Host/
+WORKDIR /source/Gateway/
 
 RUN dotnet publish -c Release --no-build -o /app
 
@@ -14,4 +14,4 @@ FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 WORKDIR /app
 COPY --from=build  /app ./
 
-ENTRYPOINT ["dotnet", "FluentPOS.Gateway.Host.dll"]
+ENTRYPOINT ["dotnet", "FluentPOS.Gateway.dll"]
