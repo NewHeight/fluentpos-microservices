@@ -18,7 +18,7 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v3
       - name: Build Gateway Image
-        working-directory: ./src/gateway
+        working-directory: ./src/api-gateway
         run: docker build -t ${{ github.actor }}/fluentpos-gateway:$(date +%Y%m%d) -t ${{ github.actor }}/fluentpos-gateway:latest .
       - name: Push Gateway Image
         run: docker push ${{ github.actor }}/fluentpos-gateway --all-tags
