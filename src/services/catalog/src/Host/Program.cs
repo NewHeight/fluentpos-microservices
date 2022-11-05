@@ -1,11 +1,18 @@
+using BuildingBlocks.CQRS;
+using BuildingBlocks.Logging;
+using FluentPOS.Catalog.Application;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.AddCommonSerilog(builder.Environment);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(o => { o.EnableAnnotations(); });
+
+// Register BB Services
+builder.Services.UseCommonMediatR(typeof(CatalogApplication).Assembly, enableLoggingBehavior: true);
 
 var app = builder.Build();
 
@@ -13,7 +20,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(o => { o.DefaultModelsExpandDepth(-1); });
 }
 
 app.UseHttpsRedirection();
