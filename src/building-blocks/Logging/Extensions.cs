@@ -23,9 +23,9 @@ public static class Extensions
 
             loggerConfiguration.MinimumLevel.Is(logLevel);
             if (loggerOptions.PrintToConsole) loggerConfiguration.WriteTo.SpectreConsole(loggerOptions.LogTemplate, logLevel);
-            if (loggerOptions.StructuredLoggerOptions != null && loggerOptions.StructuredLoggerOptions.Enable)
+            if (loggerOptions.StructuredLoggerOptions.Enable)
             {
-                _ = loggerConfiguration.WriteTo.File(new CompactJsonFormatter(), loggerOptions.StructuredLoggerOptions.Path);
+                _ = loggerConfiguration.WriteTo.File(new CompactJsonFormatter(), path: loggerOptions.StructuredLoggerOptions.Path);
             }
         });
 
