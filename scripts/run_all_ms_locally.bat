@@ -1,0 +1,2 @@
+start run_api_gateway.bat
+start run_catalog_ms.bat
