@@ -21,7 +21,9 @@ public static class Extensions
                    ? level
                    : LogEventLevel.Information;
 
-            loggerConfiguration.MinimumLevel.Is(logLevel);
+            loggerConfiguration.MinimumLevel.Is(logLevel)
+            .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+            .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information);
             if (loggerOptions.PrintToConsole) loggerConfiguration.WriteTo.SpectreConsole(loggerOptions.LogTemplate, logLevel);
             if (loggerOptions.StructuredLoggerOptions.Enable)
             {
